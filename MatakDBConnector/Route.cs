@@ -23,7 +23,8 @@ namespace MatakDBConnector
         private string _note;
         private string _geoJsonString;
         private string _driverName;
-        private int _phone_num;
+        private string _phone_num;
+        private DateTime _last_changed;
 
         public Route()
         {
@@ -42,12 +43,13 @@ namespace MatakDBConnector
             _note = "0";
             _geoJsonString = "0";
             _driverName = "0";
-            _phone_num = 0;
+            _phone_num = "0";
+            _last_changed = DateTime.Now;
         }
         
         public Route(string name, DateTime startDatetime, DateTime endDatetime, int geojsonDocId,
             int reasonId, int priorityId, int statusId, int orgId, int createdByUserId, int sentToUserId,
-            int approvedByUserId, string note, string geoJsonString, string driverName, int phone_num)
+            int approvedByUserId, string note, string geoJsonString, string driverName, string phone_num, DateTime last_changed)
         {
             _routeId = 0;
             _name = name;
@@ -65,11 +67,12 @@ namespace MatakDBConnector
             _geoJsonString = geoJsonString;
             _driverName = driverName;
             _phone_num = phone_num;
+            _last_changed = last_changed;
         }
         
         public Route(int routeId, string name, DateTime startDatetime, DateTime endDatetime, int geojsonDocId,
             int reasonId, int priorityId, int statusId, int orgId, int createdByUserId, int sentToUserId,
-            int approvedByUserId, string note, string geoJsonString, string driverName, int phone_num)
+            int approvedByUserId, string note, string geoJsonString, string driverName, string phone_num, DateTime last_changed)
         {
             _routeId = routeId;
             _name = name;
@@ -87,6 +90,7 @@ namespace MatakDBConnector
             _geoJsonString = geoJsonString;
             _driverName = driverName;
             _phone_num = phone_num;
+            _last_changed = last_changed;
         }
 
         public Route RouteMaker(NpgsqlDataReader reader)
@@ -106,7 +110,8 @@ namespace MatakDBConnector
             Note = reader.GetString(12);
             GeoJsonString = reader.GetString(13);
             driverName = reader.GetString(14);
-            phone_num = reader.GetInt32(15);
+            phone_num = reader.GetString(15);
+            last_changed = reader.GetDateTime(16);
             return this;
         }
         
@@ -137,6 +142,7 @@ namespace MatakDBConnector
             command.Parameters.AddWithValue("trip_area", route.GeoJsonString);
             command.Parameters.AddWithValue("driver_name", route.driverName);
             command.Parameters.AddWithValue("phone_num", route.phone_num);
+            command.Parameters.AddWithValue("last_changed", DateTime.Now);
         }
 
         public int RouteId
@@ -229,10 +235,16 @@ namespace MatakDBConnector
             set => _driverName = value;
         }
 
-        public int phone_num
+        public string phone_num
         {
             get => _phone_num;
             set => _phone_num = value;
+        }
+
+        public DateTime last_changed
+        {
+            get => _last_changed;
+            set => _last_changed = value;
         }
     }
 }

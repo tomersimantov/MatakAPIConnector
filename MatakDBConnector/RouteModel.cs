@@ -20,7 +20,7 @@ namespace MatakDBConnector
                     command.Connection = connection;                                     
                 
                     command.CommandText =
-                        "INSERT INTO route (name, start_datetime, end_datetime, geojson_doc_id, reason_id, priority_id, status_id, org_id, created_by_user_id, sent_to_user_id, approved_by_user_id, note, created, updated, trip_area, driver_name, phone_num) VALUES (@name, @start_datetime, @end_datetime, @geojson_doc_id, @reason_id, @priority_id, @status_id, @org_id, @created_by_user_id, @sent_to_user_id, @approved_by_user_id, @note, @created, @updated, st_geomfromgeojson(@trip_area), @driver_name, @phone_num) RETURNING route_id";
+                        "INSERT INTO route (name, start_datetime, end_datetime, geojson_doc_id, reason_id, priority_id, status_id, org_id, created_by_user_id, sent_to_user_id, approved_by_user_id, note, created, updated, trip_area, driver_name, phone_num, last_changed) VALUES (@name, @start_datetime, @end_datetime, @geojson_doc_id, @reason_id, @priority_id, @status_id, @org_id, @created_by_user_id, @sent_to_user_id, @approved_by_user_id, @note, @created, @updated, st_geomfromgeojson(@trip_area), @driver_name, @phone_num, @last_changed) RETURNING route_id";
                     newRouteCommandHelper(newRoute, command, true);
                     
                     newRoute.RouteId = Convert.ToInt32(command.ExecuteScalar());
@@ -59,7 +59,7 @@ namespace MatakDBConnector
                     command.Connection = connection;
 
                     command.CommandText =
-                        "UPDATE route SET name = (@name), start_datetime = (@start_datetime), end_datetime = (@end_datetime), _doc_id = (@geojson_doc_id), reason_id = (@reason_id), priority_id = (@priority_id), status_id = (@status_id), org_id = (@org_id), sent_to_user_id = (@sent_to_user_id), approved_by_user_id = (@approved_by_user_id), note = (@note), created = (@created), updated = (@updated), trip_area = st_geomfromgeojson(@trip_area), driver_name = (@driver_name), phone_num = (@phone_num) WHERE route_id = (@routeId) RETURNING route_id";
+                        "UPDATE route SET name = (@name), start_datetime = (@start_datetime), end_datetime = (@end_datetime), _doc_id = (@geojson_doc_id), reason_id = (@reason_id), priority_id = (@priority_id), status_id = (@status_id), org_id = (@org_id), sent_to_user_id = (@sent_to_user_id), approved_by_user_id = (@approved_by_user_id), note = (@note), created = (@created), updated = (@updated), trip_area = st_geomfromgeojson(@trip_area), driver_name = (@driver_name), phone_num = (@phone_num), last_changed = (@last_changed) WHERE route_id = (@routeId) RETURNING route_id";
                     command.Parameters.AddWithValue("routeId", route.RouteId);
                     newRouteCommandHelper(route, command, false);
 
@@ -92,7 +92,7 @@ namespace MatakDBConnector
                     NpgsqlCommand command = new NpgsqlCommand();
                     command.Connection = connection;
                     
-                    command.CommandText = "SELECT route_id, name, start_datetime, end_datetime, geojson_doc_id, reason_id, priority_id, status_id, org_id, created_by_user_id, sent_to_user_id, approved_by_user_id, note, st_asgeojson(trip_area, 15, 0), driver_name, phone_num FROM route WHERE route_id = (@routeId)";
+                    command.CommandText = "SELECT route_id, name, start_datetime, end_datetime, geojson_doc_id, reason_id, priority_id, status_id, org_id, created_by_user_id, sent_to_user_id, approved_by_user_id, note, st_asgeojson(trip_area, 15, 0), driver_name, phone_num, last_changed FROM route WHERE route_id = (@routeId)";
                     command.Parameters.AddWithValue("routeId", routeId);
                     NpgsqlDataReader reader = command.ExecuteReader();
 
@@ -161,7 +161,7 @@ namespace MatakDBConnector
                     NpgsqlCommand command = new NpgsqlCommand();
                     command.Connection = connection;
                     
-                    command.CommandText = "SELECT route_id, name, start_datetime, end_datetime, geojson_doc_id, reason_id, priority_id, status_id, org_id, created_by_user_id, sent_to_user_id, approved_by_user_id, note, st_asgeojson(trip_area, 15, 0), driver_name, phone_num FROM route";
+                    command.CommandText = "SELECT route_id, name, start_datetime, end_datetime, geojson_doc_id, reason_id, priority_id, status_id, org_id, created_by_user_id, sent_to_user_id, approved_by_user_id, note, st_asgeojson(trip_area, 15, 0), driver_name, phone_num, last_changed FROM route";
                     NpgsqlDataReader reader = command.ExecuteReader();
 
                     while (reader.Read())
@@ -194,7 +194,7 @@ namespace MatakDBConnector
                     NpgsqlCommand command = new NpgsqlCommand();
                     command.Connection = connection;
                     
-                    command.CommandText = "SELECT route_id, name, start_datetime, end_datetime, geojson_doc_id, reason_id, priority_id, status_id, org_id, created_by_user_id, sent_to_user_id, approved_by_user_id, note, st_asgeojson(trip_area, 15, 0), driver_name, phone_num FROM route WHERE org_id = (@orgId)";
+                    command.CommandText = "SELECT route_id, name, start_datetime, end_datetime, geojson_doc_id, reason_id, priority_id, status_id, org_id, created_by_user_id, sent_to_user_id, approved_by_user_id, note, st_asgeojson(trip_area, 15, 0), driver_name, phone_num, last_changed FROM route WHERE org_id = (@orgId)";
                     command.Parameters.AddWithValue("orgId", orgId);
                     NpgsqlDataReader reader = command.ExecuteReader();
 
@@ -230,7 +230,7 @@ namespace MatakDBConnector
                     NpgsqlCommand command = new NpgsqlCommand();
                     command.Connection = connection;
 
-                    command.CommandText = "SELECT route_id, name, start_datetime, end_datetime, geojson_doc_id, reason_id, priority_id, status_id, org_id, created_by_user_id, sent_to_user_id, approved_by_user_id, note, st_asgeojson(trip_area, 15, 0), driver_name, phone_num FROM route WHERE created_by_user_id = (@createdByUserId)";
+                    command.CommandText = "SELECT route_id, name, start_datetime, end_datetime, geojson_doc_id, reason_id, priority_id, status_id, org_id, created_by_user_id, sent_to_user_id, approved_by_user_id, note, st_asgeojson(trip_area, 15, 0), driver_name, phone_num, last_changed FROM route WHERE created_by_user_id = (@createdByUserId)";
                     command.Parameters.AddWithValue("createdByUserId", createdByUserId);
                     NpgsqlDataReader reader = command.ExecuteReader();
                 

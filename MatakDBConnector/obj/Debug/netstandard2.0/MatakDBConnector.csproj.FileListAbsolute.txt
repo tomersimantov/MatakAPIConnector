@@ -25,3 +25,11 @@ C:\Users\vggre\Desktop\MTKDBConnector-master\MatakDBConnector\obj\Debug\netstand
 C:\Users\vggre\Desktop\MTKDBConnector-master\MatakDBConnector\obj\Debug\netstandard2.0\MatakDBConnector.AssemblyInfo.cs
 C:\Users\vggre\Desktop\MTKDBConnector-master\MatakDBConnector\obj\Debug\netstandard2.0\MatakDBConnector.dll
 C:\Users\vggre\Desktop\MTKDBConnector-master\MatakDBConnector\obj\Debug\netstandard2.0\MatakDBConnector.pdb
+C:\Users\Tomer\Source\Repos\MatakAPIConnector\MatakDBConnector\bin\Debug\netstandard2.0\MatakDBConnector.deps.json
+C:\Users\Tomer\Source\Repos\MatakAPIConnector\MatakDBConnector\bin\Debug\netstandard2.0\MatakDBConnector.dll
+C:\Users\Tomer\Source\Repos\MatakAPIConnector\MatakDBConnector\bin\Debug\netstandard2.0\MatakDBConnector.pdb
+C:\Users\Tomer\Source\Repos\MatakAPIConnector\MatakDBConnector\obj\Debug\netstandard2.0\MatakDBConnector.AssemblyInfoInputs.cache
+C:\Users\Tomer\Source\Repos\MatakAPIConnector\MatakDBConnector\obj\Debug\netstandard2.0\MatakDBConnector.AssemblyInfo.cs
+C:\Users\Tomer\Source\Repos\MatakAPIConnector\MatakDBConnector\obj\Debug\netstandard2.0\MatakDBConnector.dll
+C:\Users\Tomer\Source\Repos\MatakAPIConnector\MatakDBConnector\obj\Debug\netstandard2.0\MatakDBConnector.pdb
+C:\Users\Tomer\Source\Repos\MatakAPIConnector\MatakDBConnector\obj\Debug\netstandard2.0\MatakDBConnector.csprojAssemblyReference.cache
