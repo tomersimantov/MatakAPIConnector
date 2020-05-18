@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Tomer\\Source\\Repos\\MatakAPIConnector\\MatakDBConnector\\MatakDBConnector.csproj": {}
+    "C:\\Users\\Tomer\\source\\repos\\MatakAPIConnector\\MatakDBConnector\\MatakDBConnector.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Tomer\\Source\\Repos\\MatakAPIConnector\\MatakDBConnector\\MatakDBConnector.csproj": {
+    "C:\\Users\\Tomer\\source\\repos\\MatakAPIConnector\\MatakDBConnector\\MatakDBConnector.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Tomer\\Source\\Repos\\MatakAPIConnector\\MatakDBConnector\\MatakDBConnector.csproj",
+        "projectUniqueName": "C:\\Users\\Tomer\\source\\repos\\MatakAPIConnector\\MatakDBConnector\\MatakDBConnector.csproj",
         "projectName": "MatakDBConnector",
-        "projectPath": "C:\\Users\\Tomer\\Source\\Repos\\MatakAPIConnector\\MatakDBConnector\\MatakDBConnector.csproj",
+        "projectPath": "C:\\Users\\Tomer\\source\\repos\\MatakAPIConnector\\MatakDBConnector\\MatakDBConnector.csproj",
         "packagesPath": "C:\\Users\\Tomer\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Tomer\\Source\\Repos\\MatakAPIConnector\\MatakDBConnector\\obj\\",
+        "outputPath": "C:\\Users\\Tomer\\source\\repos\\MatakAPIConnector\\MatakDBConnector\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Tomer\\AppData\\Roaming\\NuGet\\NuGet.Config",
